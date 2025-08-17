@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Baarakallah Fii Umrik Hamdan</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(to right, #74ebd5, #9face6);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .container {
+      text-align: center;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0px 5px 20px rgba(0,0,0,0.2);
+      max-width: 500px;
+      z-index: 10;
+    }
+
+    h1 {
+      font-size: 2em;
+      color: #2c3e50;
+    }
+
+    p {
+      font-size: 1.2em;
+      color: #34495e;
+      margin-top: 10px;
+    }
+
+    .btn {
+      margin-top: 20px;
+      padding: 12px 25px;
+      font-size: 1em;
+      border: none;
+      border-radius: 8px;
+      background: #3498db;
+      color: white;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #2980b9;
+    }
+
+    /* Animasi balon */
+    .balloon {
+      position: absolute;
+      bottom: -150px;
+      width: 50px;
+      height: 70px;
+      border-radius: 50%;
+      animation: float 8s infinite ease-in;
+    }
+
+    .balloon::before {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      width: 2px;
+      height: 20px;
+      background: #555;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(-100vh) rotate(20deg); opacity: 0; }
+    }
+
+    /* Foto */
+    #photo {
+      display: none;
+      margin-top: 20px;
+      max-width: 250px;
+      border-radius: 15px;
+      box-shadow: 0px 5px 15px rgba(0,0,0,0.3);
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.8); }
+      to { opacity: 1; transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>🎉 Baarakallah Fii Umrik Hamdan 🎉</h1>
+    <p>Semoga Allah memberkahi umurmu, memberikan kesehatan, kebahagiaan, serta kemudahan dalam setiap langkah hidupmu.</p>
+    <button class="btn" onclick="startCelebration()">🎈 Klik untuk kejutan 🎈</button>
+    <br>
+    <img id="photo" src="hamdan.jpg" alt="Foto Hamdan">
+  </div>
+
+  <!-- Musik -->
+  <audio id="birthdaySong" src="nasyid.mp3"></audio>
+
+  <script>
+    function startCelebration() {
+      // Tampilkan balon
+      for (let i = 0; i < 15; i++) {
+        let balloon = document.createElement("div");
+        balloon.className = "balloon";
+        balloon.style.left = Math.random() * window.innerWidth + "px";
+        balloon.style.backgroundColor = randomColor();
+        balloon.style.animationDuration = (5 + Math.random() * 5) + "s";
+        document.body.appendChild(balloon);
+
+        setTimeout(() => {
+          balloon.remove();
+        }, 8000);
+      }
+
+      // Tampilkan foto
+      document.getElementById("photo").style.display = "block";
+
+      // Putar musik
+      let song = document.getElementById("birthdaySong");
+      song.play();
+    }
+
+    function randomColor() {
+      const colors = ["#ff6f61", "#6a89cc", "#82ccdd", "#b8e994", "#f8c291", "#e55039", "#60a3bc"];
+      return colors[Math.floor(Math.random() * colors.length)];
+    }
+  </script>
+
+</body>
+</html>
